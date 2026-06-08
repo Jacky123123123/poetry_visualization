@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>唐朝战争诗数据可视化</title>
+    
+    <link rel="stylesheet" href="./workfolder/static/css/reset.css">
+
+    <link rel="stylesheet" href="./workfolder/static/css/first.css">
+    <link rel="stylesheet" href="./workfolder/static/css/flagchose.css">
+    <link rel="stylesheet" href="./workfolder/static/css/war-data-graph.css">
+    <link rel="stylesheet" href="./workfolder/static/css/flowers.css">
+    <link rel="stylesheet" href="./workfolder/static/css/gaoshi.css">
+    <link rel="stylesheet" href="./workfolder/static/css/guiyuan.css">
+    <link rel="stylesheet" href="./workfolder/static/css/renkoutu.css">
+    <link rel="stylesheet" href="./workfolder/static/css/shizhongtu.css">
+
+    <script src="./jQuery/external/jquery/jquery.js"></script>
+    <script src="./jQuery/jquery-ui.min.js"></script>
+    <script src="./jQuery/jquery-ui.js"></script>
+    <script src="node_modules/echarts/dist/echarts.min.js"></script>
+    <script src="node_modules\d3\dist\d3.min.js"></script>
+    <link rel="stylesheet" href="./jQuery/jquery-ui.css">
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <style>
+        body {
+            font-family: 'Kaiti';
+        }
+        .title-background {
+            position: absolute;
+            top: 0;
+            left: 70px;
+            height: 100vh;
+            width: auto;
+            /* display: none; */
+        }
+        .last-background {
+            background-image: url('./images/背景2.png'); /* 设置背景图片 */
+            background-repeat: repeat-x;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 18000px;
+            z-index: -999;
+        }
+        .main-div {
+            position: relative;
+        }
+        .chushengtang-title {
+            height: 55vh;
+            position: absolute;
+            top: 22vh;
+        } 
+
+
+
+
+        .popup {
+    position: fixed;
+    bottom: -83vh;
+    left: -100px;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    overflow: hidden; /* 隐藏溢出的内容 */
+    pointer-events: none;
+}
+.popup img {
+    width: 1820px;
+    height: 70vh;
+}
+/* 触发器按钮样式 */
+.popup-trigger {
+    position: fixed;
+    bottom: 5px;
+    right: 44px;
+    height: 40px;
+    /* background-color: #007bff; */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.popup-trigger img {
+    width: 35px;
+    height: 20px;
+}
+
+.popup-trigger.active {
+    transform: translateY(-755%) rotate(180deg); /* 根据弹窗的位移调整触发器位置 */
+}
+.popup-explanation.active {
+    transform: translateY(-755%);
+
+}
+
+
+.popup-explanation {
+    position: fixed;
+    bottom: 0px;
+    right: 104px;
+    height: 40px;
+    font-size: 18px;
+    font-family: 'Kaiti';
+    color:rgb(177, 156, 106, 0.8);
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.popup-background {
+    width: 2720px; /* 让图片充满其容器 */
+    height: auto; /* 让图片高度自适应 */
+    pointer-events: none;
+}
+
+        .div-page-class1, .div-page-class2, .div-page-class3, .div-page-class4, .div-page-class5,
+        .div-page-class6, .div-page-class7, .div-page-class8 {
+            position: absolute;
+            width: 1920px;
+            height: 100vh;
+            top: 0;
+        }
+        .div-page-class1 {
+            
+            left: 1650px;
+        }
+        .div-page-class2 {
+            left: 4300px;
+            display: flex; /* 使用 Flex 布局 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+        }
+        .div-page-class3 {
+            left: 6600px;
+            /* background-color: aqua; */
+        }
+        .div-page-class4 {
+            left: 8450px;
+            /* background-color: aqua; */
+        }
+        .div-page-class5 {
+            left: 11400px;
+            /* background-color: aqua; */
+        }
+        .div-page-class6 {
+            left: 13800px;
+            width: 3000px;
+        }
+        .div-page-class7 {
+            left: 15600px;
+            width: 3000px;
+        }
+        .div-page-class8 {
+            left: 17400px;
+            width: 1000px;
+        }
+        .stop-bar {
+            position: absolute;
+            height: 100vh;
+            top: 0;
+            width: 600px;
+            left: 6000px;
+        }
+
+        /* @keyframes fadeInAndDelayAndMoveAndFadeOut2 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    90% {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+} */
+
+.rolling-icon {
+    position: absolute;
+    top: 68vh;
+    left: 310px;
+    height: 2vh;
+    /* animation: fadeInAndDelayAndMoveAndFadeOut2 12s infinite; 循环播放动画，每个循环持续6秒 */
+    cursor: pointer;
+} 
+
+
+        .title-background1, .title-background2, .title-background3 {
+            position: absolute;
+            top: 67vh;
+            left: 230px;
+            height: 14vh;
+           
+        }
+        .title-background2 {
+            opacity: 0; /* 初始状态下不显示 */
+    transition: opacity 1s ease-in-out; /* 添加过渡效果 */
+        }
+        .title-background3 {
+            opacity: 0; /* 初始状态下不显示 */
+    transition: opacity 1s ease-in-out; /* 添加过渡效果 */
+        }
+
+
+
+
+.title-background1.animate {
+    animation: fadeInAndDelayAndMoveAndFadeOut 18s infinite; 
+}
+
+.title-background2.animate {
+    animation: fadeInAndDelayAndMoveAndFadeOut 18s infinite; 
+    animation-delay: 6s; 
+}
+.title-background3.animate {
+    animation: fadeInAndDelayAndMoveAndFadeOut 18s infinite; 
+    animation-delay: 12s; }
+
+@keyframes fadeInAndDelayAndMoveAndFadeOut {
+    0% {
+        opacity: 0;
+    }
+    7% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(200px);
+        opacity: 0;
+    }
+    100% {    
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+.intro-background1 {
+    position: absolute;
+    left: 3400px;
+    height: 43vh;
+    top: 29vh;
+}
+.intro-background2 {
+    position: absolute;
+    left: 5970px;
+    height: 43vh;
+    top: 29vh;
+}
+.intro-background3 {
+    position: absolute;
+    left: 11100px;
+    height: 43vh;
+    top: 29vh;
+}
+.intro-background4 {
+    position: absolute;
+    left: 13200px;
+    height: 43vh;
+    top: 29vh;
+}
+#anchor-1 {
+    position: absolute;
+    left: 4650px;
+}
+#anchor-2 {
+    position: absolute;
+    left: 7400px;
+}
+#anchor-3 {
+    position: absolute;
+    left: 12500px;
+}
+#AnchorId {
+    position: absolute;
+    left: 10200px;
+}
+strong {
+    font-weight: bold;
+}
+.thanku {
+    position: absolute;
+    bottom: 10vh;
+    left: 0px;
+    height: 53vh;
+}
+    </style>
+</head>
+<body style="overflow-y: hidden;">
+    <div class="root">
+        <div class="main-div">
+            <img src="./images/背景2.png" alt="" class="last-background">
+            <img src="./images/封面/背景_画板 1.jpg" alt="" class="title-background">
+            <img src="./images/封面/二cankao.png" alt="" class="title-background1">
+            <img src="./images/封面/一cankao.png" alt="" class="title-background2">
+            <img src="./images/封面/三cankao.png" alt="" class="title-background3">
+            <img src="./images/封面/箭头cankao.png" alt="" class="rolling-icon">
+            <img src="./images/封面/初唐cankao.png" alt="" class="intro-background1">
+            <img src="./images/封面/中唐cankao.png" alt="" class="intro-background2">
+            <img src="./images/封面/闺怨cankao.png" alt="" class="intro-background3">
+            <img src="./images/封面/总览cankao.png" alt="" class="intro-background4">
+           
+
+
+
+
+            <div class="div-page-class1">
+
+                            <img src="./images/背景_画板 1 副本.jpg" alt="" class="style-choose">
+                    
+                    <div class="guide-area">
+                        <div class="guide-area1">
+                            <img src="./images/ChoiceUI/风格.png" alt="">
+                            <img src="./images/ChoiceUI/资源 56cankao.png" alt="" class="style-choice1 style-choice">
+                            <img src="./images/ChoiceUI/资源 57cankao.png" alt="" class="style-choice2 style-choice">
+                            <img src="./images/ChoiceUI/资源 58cankao.png" alt="" class="style-choice3 style-choice">
+                        </div>
+                        <div class="guide-area2">
+                            <img src="./images/ChoiceUI/情感cankao.png" alt="">
+                            <img src="./images/ChoiceUI/00cankao.png" alt="" class="emotion-choice1 emotion-choice">
+                            <img src="./images/ChoiceUI/11cankao.png" alt="" class="emotion-choice2 emotion-choice">
+                            <img src="./images/ChoiceUI/22cankao.png" alt="" class="emotion-choice3 emotion-choice">
+                            <img src="./images/ChoiceUI/33cankao.png" alt="" class="emotion-choice4 emotion-choice">
+                            <img src="./images/ChoiceUI/44cankao.png" alt="" class="emotion-choice5 emotion-choice">
+                            <img src="./images/ChoiceUI/55cankao.png" alt="" class="emotion-choice6 emotion-choice">
+                            <img src="./images/ChoiceUI/66cankao.png" alt="" class="emotion-choice7 emotion-choice">
+                        </div>
+                        <div class="guide-area3">
+                            <img src="./images/ChoiceUI/内容cankao.png" alt="">
+                            <img src="./images/ChoiceUI/0cankao.png" alt="" class="content-choice content-choice1">
+                            <img src="./images/ChoiceUI/1cankao.png" alt="" class="content-choice content-choice2">
+                            <img src="./images/ChoiceUI/2cankao.png" alt="" class="content-choice content-choice3">
+                            <img src="./images/ChoiceUI/3cankao.png" alt="" class="content-choice content-choice4">
+                            <img src="./images/ChoiceUI/4cankao.png" alt="" class="content-choice content-choice5">
+                            <img src="./images/ChoiceUI/5cankao.png" alt="" class="content-choice content-choice6">
+                            <img src="./images/ChoiceUI/6cankao.png" alt="" class="content-choice content-choice7">
+                        </div>
+                        
+                    </div>
+                    <div class="flag-shown-area">
+                        <div class="style-flag-shown-area">
+                            <img src="./images/旗/0.png" alt="" class="flag1">
+                        <img src="./images/旗/1.png" alt="" class="flag2">
+                        <img src="./images/旗/2.png" alt="" class="flag3">
+                        </div>
+                        <div class="color-flag-shown-area">
+
+                        </div>
+                        <div class="content-flag-shown-area">
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="choose-flag">
+                        
+                        <img src="./images/circle.png" alt="" class="choice1 choices">
+                        <img src="./images/circle.png" alt="" class="choice2 choices">
+                        <img src="./images/circle.png" alt="" class="choice3 choices">
+                    </div>
+                    <div class="poet-show-area">
+                        <div class="poems-show"></div>
+                        
+                    </div>
+                    <div class="poem-tooltip"></div>
+
+                
+                        <!-- Part1 Stop Here !!!! -->
+            </div>
+
+
+            <a id="anchor-1"></a>
+            <div class="div-page-class2">
+                <!-- <img src="../images/封面/初唐cankao.png" alt="" class="chushengtang-title"> -->
+                    <div class="image-container">
+                        <div class="container" style="position: relative;">
+                            <img src="./images/资源 66cankao.png" style="position: absolute; top: 0; left: 0; width: auto; height: 100vh;">
+                            <svg id="svg-container" style="position: absolute; top: 0; left: 0;"></svg>
+                            <img src="./images/滑条上的标记.png" id="note1" alt="">
+                            <img src="./images/滑条上的标记.png" id="note2" alt="">
+                            <div class="tip1 tip">618年</div>
+                            <div class="tip2 tip">755年</div>
+                            <div class="warn-tip3">上下拖动右侧指针可筛选时间范围</div>
+                            <div id="tooltip"></div>
+                            <div id="slider-vertical" ></div>
+                            <div class="poet-name-container" id="poet-name-container">
+                                <div class="poet-title"></div>
+                                <div class="poet-sub-title">诗人简介</div>
+                                <div id="poet-style-pie-chart"></div>
+                                <div class="quit"></div>
+                            </div>
+        
+                                <div class="poet-info-container">
+                                    <div class="war-data-container">
+                                        <div class="war-data"></div>
+                                    </div>
+                                    <div class="war-wintime-container">
+                                        <div class="war-wintime-data"></div>
+                                    </div>
+                                    <div class="war-winrate-container">
+                                        <div class="war-winrate-data"></div>
+                                    </div>
+                                </div>
+                                
+        
+                        </div>
+                    </div>
+                
+            </div>
+
+            <a id="anchor-2"></a>
+            <a id="AnchorId"></a>
+            <div class="stop-bar"></div>
+            <div class="div-page-class3">
+                            <img src="./images/资源 42cankao.png" alt="" class="leaf-bac-img">
+                    <img src="./images/资源 44cankao.png" alt="" class="warflag-bac-img">
+                    <div class="piechart-container">
+                        <img src="./images/封面/前40年cankao.png" alt="" class="former-40years">
+                        <img src="./images/封面/后40年cankao.png" alt="" class="later-40years">
+                    </div>
+                    <div class="flag-container">
+                        <div id="flagTooltip" style="display: none;"></div>
+                        <div id="Line5" class="line">
+                        </div>
+                        <div id="Line1" class="line">
+                        </div>
+                        <div id="Line2" class="line">
+                        </div>
+                        <div id="Line4" class="line">
+                        </div>
+                            <div id="Line3" class="line">
+                            </div>
+                            <div class="flag-div-line">
+                                <img src="./images/安史之乱线条cankao.png" alt="">
+                            </div>
+                    </div>
+                    
+                    <div class="leaf-container" id="leafContainer"></div>
+                    <div class="flower-tooltip" id="flower-tooltip"></div>
+            </div>
+
+
+
+            <div class="div-page-class4">
+                <div class="gaoshi-container">
+                    <img src="./images/背景.png" alt="" class="gaoshi-background">
+                    <img src="./images/高适/一开始的状态.png" alt="" class="gaoshi-state1">
+                    <img src="./images/高适/从戎.png" alt="" class="gaoshi-state2">
+                    <img src="./images/高适/拿笔.png" alt="" class="gaoshi-state3">
+                    <img src="./images/高适/资源 52cankao.png" alt="" class="target" id="targetArea">
+                    <img src="./images/高适/资源 52cankao.png" alt="" class="drag-init1">
+                    <img src="./images/高适/资源 52cankao.png" alt="" class="drag-init2">
+                    <img src="./images/高适/资源 53cankao.png" alt="" class="tool1" id="tool1">
+                    <img src="./images/高适/资源 54cankao.png" alt="" class="tool2" id="tool2">
+                    
+                    <div class="gaoshi-zaoqi-bigcontainer">
+                        <div class="gaoshi-sangji1" id="gaoshi-sangji1"></div>
+                        <div class="gaoshi-poem-container" id="gaoshi-poem-container">
+                            <div class="gaoshi-frame-group">
+                                <img src="./images/高适/图层 1.png" alt="" class="gaoshi-frame1">
+                                <div class="frame-char frame-char1"></div>
+                                <img src="./images/高适/图层 1.png" alt="" class="gaoshi-frame2">
+                                <div class="frame-char frame-char2"></div>
+                                <img src="./images/高适/图层 1.png" alt="" class="gaoshi-frame3">
+                                <div class="frame-char frame-char3"></div>
+                            </div>
+                            <p id="edgeDetails"></p>
+                            <p id="authorCount"></p>
+                        <div id="poemContainer">
+                            
+                        </div>
+                        </div>
+                        <div class="gaoshi-period-area" id="gaoshi-period-area">
+                            <img src="./images/periods-pictures/北上游历.png" alt="">
+                        </div>
+                    </div>
+                    <div class="gaoshi-wanqi-bigcontainer">
+                        <div class="gaoshi-sangji2" id="gaoshi-sangji2"></div>
+                        <div class="gaoshi-poem-container" id="gaoshi-poem-container2">
+                            <div class="gaoshi-frame-group">
+                                <img src="./images/高适/图层 1.png" alt="" class="gaoshi-frame1">
+                                <div class="frame-charb frame-char1"></div>
+                                <img src="./images/高适/图层 1.png" alt="" class="gaoshi-frame2">
+                                <div class="frame-charb frame-char2"></div>
+                                <img src="./images/高适/图层 1.png" alt="" class="gaoshi-frame3">
+                                <div class="frame-charb frame-char3"></div>
+                            </div>
+                            <p id="edgeDetails2"></p>
+                            <p id="authorCount2"></p>
+                        <div id="poemContainer2">
+                           
+                        </div>
+                        </div>
+                        <div class="gaoshi-period-area" id="gaoshi-period-area2">
+                            <img src="./images/periods-pictures/入河西幕.png" alt="">
+                        </div>
+                    </div>
+               </div>
+            </div>
+
+
+
+            <a id="anchor-3"></a>
+            <div class="div-page-class5">
+                <div class="big-container">
+                    <div class="guiyuan-container">
+                       
+                        <img src="./images/底板cankao.png" alt="" class="zhanban">
+                        <div class="scroll-wrapper">
+                            <div id="guiyuan-chart" style="width: 1054px; height: 85vh;"></div>
+                            <img src="./images/chart-pie-solid.svg" alt="" class="pie-chart-click">
+                           <div class="warntip2">点击左侧图表可以展示和隐藏详细数据信息</div>
+                            <div class="guiyuan-funv-image-group">
+                                <img src="./images/女人/4cankao.png" alt="" class="woman1 women">
+                                <img src="./images/女人/4cankao.png" alt="" class="woman2 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman3 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman4 women">
+                                <img src="./images/女人/4cankao.png" alt="" class="woman5 women">
+                                <img src="./images/女人/1cankao.png" alt="" class="woman6 women">
+                                <img src="./images/女人/2cankao.png" alt="" class="woman7 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman8 women">
+                                <img src="./images/女人/2cankao.png" alt="" class="woman9 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman10 women">
+                                <img src="./images/女人/1cankao.png" alt="" class="woman11 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman12 women">
+                                <img src="./images/女人/2cankao.png" alt="" class="woman13 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman14 women">
+                                <img src="./images/女人/2cankao.png" alt="" class="woman15 women">
+                                <img src="./images/女人/3cankao.png" alt="" class="woman16 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman17 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman18 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman19 women">
+                                <img src="./images/女人/2cankao.png" alt="" class="woman20 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman21 women">
+                                <img src="./images/女人/2cankao.png" alt="" class="woman22 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman23 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman24 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman25 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman26 women">
+                                <img src="./images/女人/2cankao.png" alt="" class="woman27 women">
+                                <img src="./images/女人/1cankao.png" alt="" class="woman28 women">
+                                <img src="./images/女人/1cankao.png" alt="" class="woman29 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman30 women">
+                                <img src="./images/女人/2cankao.png" alt="" class="woman31 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman32 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman33 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman34 women">
+                                <img src="./images/女人/3cankao.png" alt="" class="woman35 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman36 women">
+                                <img src="./images/女人/1cankao.png" alt="" class="woman37 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman38 women">
+                                <img src="./images/女人/2cankao.png" alt="" class="woman39 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman40 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman41 women">
+                                <img src="./images/女人/1cankao.png" alt="" class="woman42 women">
+                                <img src="./images/女人/2cankao.png" alt="" class="woman43 women">
+                                <img src="./images/女人/2cankao.png" alt="" class="woman44 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman45 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman46 women">
+                                <img src="./images/女人/4cankao.png" alt="" class="woman47 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman48 women">
+                                <img src="./images/女人/1cankao.png" alt="" class="woman49 women">
+                                <img src="./images/女人/4cankao.png" alt="" class="woman50 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman51 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman52 women">
+                                <img src="./images/女人/3cankao.png" alt="" class="woman53 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman54 women">
+                                <img src="./images/女人/2cankao.png" alt="" class="woman55 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman56 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman57 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman58 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman59 women">
+                                <img src="./images/女人/3cankao.png" alt="" class="woman60 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman61 women">
+                                <img src="./images/女人/3cankao.png" alt="" class="woman62 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman63 women">
+                                <img src="./images/女人/0cankao.png" alt="" class="woman64 women">
+                            </div>
+                         </div>
+                        <div class="guiyuan-tooltip" id="guiyuan-tooltip"></div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+
+
+
+
+            <div class="div-page-class6">
+                <div id="population-background">
+    
+                </div>
+                
+                <div class="bar-group">
+                  <img src="./images/人口/资源 2cankao.png" alt="" class="bar1 bar" data-tooltip="639年：1235万人">
+                  <img src="./images/人口/资源 3cankao.png" alt="" class="bar2 bar" data-tooltip="652年：1654万人">
+                  <img src="./images/人口/资源 4cankao.png" alt="" class="bar3 bar" data-tooltip="705年：3714万人">
+                  <img src="./images/人口/资源 5cankao.png" alt="" class="bar4 bar" data-tooltip="726年：4142万人">
+                  <img src="./images/人口/资源 6cankao.png" alt="" class="bar5 bar" data-tooltip="740年：4814万人">
+                  <img src="./images/人口/资源 7cankao.png" alt="" class="bar6 bar" data-tooltip="752年：5998万人"">
+                  <img src="./images/人口/资源 8cankao.png" alt="" class="bar7 bar" data-tooltip="760年：1599万人">
+                  <img src="./images/人口/资源 9cankao.png" alt="" class="bar8 bar" data-tooltip="780年：3287万人">
+                  <img src="./images/人口/资源 10cankao.png" alt="" class="bar9 bar" data-tooltip="802年：1611万人">
+                  <img src="./images/人口/资源 11cankao.png" alt="" class="bar10 bar" data-tooltip="820年：1576万人">
+                </div>
+                <div class="wars-bar-group">
+                  <img src="./images/人口/唐突厥.png" alt="" class="wars-bar-1 war-bar" data-tooltip="唐突厥战争：620-657年">
+                  <img src="./images/人口/贞观之治.png" alt="" class="wars-bar-2 war-bar"  data-tooltip="贞观之治：627-649年">
+                  <img src="./images/人口/唐朝吐蕃战争.png" alt="" class="wars-bar-3 war-bar"  data-tooltip="唐朝吐蕃战争：623-907年">
+                  <img src="./images/人口/永徽之治.png" alt="" class="wars-bar-4 war-bar"  data-tooltip="永徽之治：649-655年">
+                  <img src="./images/人口/白江口.png" alt="" class="wars-bar-5 war-bar"  data-tooltip="白江口战争：663年">
+                  <img src="./images/人口/唐灭高丽.png" alt="" class="wars-bar-6 war-bar"  data-tooltip="唐灭高丽：667-668年">
+                  <img src="./images/人口/韦后之乱.png" alt="" class="wars-bar-7 war-bar"  data-tooltip="韦后之乱：705-711年">
+                  <img src="./images/人口/开元盛世.png" alt="" class="wars-bar-8 war-bar" data-tooltip="开元盛世：712-741年">
+                  <img src="./images/人口/恒罗丝.png" alt="" class="wars-bar-9 war-bar" data-tooltip="恒罗丝之战：751年">
+                  <img src="./images/人口/安史之乱.png" alt="" class="wars-bar-10 war-bar" data-tooltip="安史之乱：755-763年">
+                </div>
+                <!-- <div class="poem-number-group">
+                  <div class="poem1 poem"></div>
+                  <div class="poem2 poem"></div>
+                  <div class="poem3 poem"></div>
+                  <div class="poem4 poem"></div>
+                  <div class="poem5 poem"></div>
+                  <div class="poem6 poem"></div>
+                  <div class="poem7 poem"></div>
+                  <div class="poem8 poem"></div>
+                  <div class="poem9 poem"></div>
+                  <div class="poem10 poem"></div>
+                  <div class="poem11 poem"></div>
+                </div> -->
+                <div class="poem-number-tooltip"></div>
+                <div class="population-tooltip"></div>
+                <div class="war-tooltip" id=""></div>
+                <!-- 绘制图表的容器 -->
+                <div id="chart" style="width: 1490px; height: 80vh ;pointer-events: none;"></div>
+            </div>
+
+
+
+            <div class="div-page-class7">
+                <div class="clock-ciyun-container">
+                    <img src="./images/词云/总览_画板 1 副本 11.jpg" alt="" class="clock-ciyun-background">
+                    <img src="./images/词云/图层 1.png" alt="" class="pointer" id="pointer">
+                    <div class="ciyun-shown-area">
+                        <div class="ciyuntu">
+                            <div class="chutang-area">
+                                <div class="yixiang-image">
+                                    <img src="./images/词云/0/白云图片cankao.png" alt="" class="chutang-yixiang1">
+                                    <img src="./images/词云/0/旌旗图片cankao.png" alt="" class="chutang-yixiang2">
+                                    <img src="./images/词云/0/长安图片cankao.png" alt="" class="chutang-yixiang3">
+                                </div>
+                                <img src="./images/词云/0/词云图cankao.png" alt="" class="circle-ciyun">
+                                <img src="./images/词云/0/白云影子cankao.png" alt="" class="ciyun-baiyun-shadow">
+                                <img src="./images/词云/0/白云字cankao.png" alt="" class="ciyun-baiyun" datas="共出现44次">
+                                <img src="./images/词云/0/旌旗影子cankao.png" alt="" class="ciyun-jingqi-shadow">
+                                <img src="./images/词云/0/旌旗字cankao.png" alt="" class="ciyun-jingqi" datas="共出现22次">
+                                <img src="./images/词云/0/长安影子cankao.png" alt="" class="ciyun-changan-shadow">
+                                <img src="./images/词云/0/长安字cankao.png" alt="" class="ciyun-changan" datas="共出现37次">
+                                <!-- <div class="ciyun-tooltip" style="display: none;"></div> -->
+                                
+                                <div class="yixiang-intro">
+                                    <img src="./images/词云/0/白云cankao.png" alt="" class="yixiang-intro1">
+                                    <img src="./images/词云/0/旌旗cankao.png" alt="" class="yixiang-intro2">
+                                    <img src="./images/词云/0/长安介绍cankao.png" alt="" class="yixiang-intro3">
+                                </div>
+                                <div class="pie-chart">
+                                    <img src="./images/词云/0/风格饼状图cankao.png" alt="" class="chutang-piechart1">
+                                    <img src="./images/词云/0/内容饼状图cankao.png" alt="" class="chutang-piechart2">
+                                    <img src="./images/词云/0/情感饼状图cankao.png" alt="" class="chutang-piechart3">
+                                </div>
+                                <!-- HTML结构中添加弹窗元素 -->
+                                <div class="piechart-tooltip" style="display: none;"></div>
+
+                            </div>
+                            <div class="zhongtang-area">
+                                <div class="yixiang-image">
+                                    <img src="./images/词云/2/征人图片cankao.png" alt="" class="zhongtang-yixiang1">
+                                    <img src="./images/词云/2/白首图片cankao.png" alt="" class="zhongtang-yixiang2">
+                                    <img src="./images/词云/2/秋风图片cankao.png" alt="" class="zhongtang-yixiang3">
+                                </div>
+                                <img src="./images/词云/2/词云图_1cankao.png" alt="" class="circle-ciyun">
+                                
+                                    <img src="./images/词云/2/征人影子cankao.png" alt="" class="ciyun-zhengren-shadow">
+                                    <img src="./images/词云/2/征人字cankao.png" alt="" class="ciyun-zhengren" datas="共出现27次">
+                                    <img src="./images/词云/2/白首影子cankao.png" alt="" class="ciyun-baishou-shadow">
+                                    <img src="./images/词云/2/白首字cankao.png" alt="" class="ciyun-baishou" datas="共出现24次">
+                                    <img src="./images/词云/2/秋风影子cankao.png" alt="" class="ciyun-qiufeng-shadow">
+                                    <img src="./images/词云/2/秋风字cankao.png" alt="" class="ciyun-qiufeng" datas="共出现20次">
+                                   
+                                    <div class="yixiang-intro">
+                                        <img src="./images/词云/2/征人cankao.png" alt="" class="yixiang-intro4">
+                                        <img src="./images/词云/2/白首cankao.png" alt="" class="yixiang-intro5">
+                                        <img src="./images/词云/2/秋风cankao.png" alt="" class="yixiang-intro6">
+                                    </div>
+                                    <div class="pie-chart">
+                                        <img src="./images/词云/2/风格cankao.png" alt="" class="chutang-piechart4">
+                                        <img src="./images/词云/2/内容cankao.png" alt="" class="chutang-piechart5">
+                                        <img src="./images/词云/2/情感cankao.png" alt="" class="chutang-piechart6">
+                                    </div>
+                                    <!-- HTML结构中添加弹窗元素 -->
+                                <div class="piechart-tooltip2" style="display: none;"></div>
+                            </div>
+                            <div class="wantang-area">  
+                                <div class="yixiang-image">
+                                    <img src="./images/词云/1/关山图片cankao.png" alt="" class="wantang-yixiang1">
+                                    <img src="./images/词云/1/楼台图片cankao.png" alt="" class="wantang-yixiang2">
+                                </div>
+                                    <img src="./images/词云/1/词云图_2cankao.png" alt="" class="circle-ciyun">
+                                    <img src="./images/词云/1/关山影子_1cankao.png" alt="" class="ciyun-guanshan-shadow">
+                                    <img src="./images/词云/1/关山字cankao.png" alt="" class="ciyun-guanshan" datas="共出现13次">
+                                    <img src="./images/词云/1/楼台影子cankao.png" alt="" class="ciyun-loutai-shadow">
+                                    <img src="./images/词云/1/楼台字cankao.png" alt="" class="ciyun-loutai" datas="共出现11次">
+                                   
+                                    <div class="yixiang-intro">
+                                        <img src="./images/词云/1/关山cankao.png" alt="" class="yixiang-intro7">
+                                        <img src="./images/词云/1/楼台cankao.png" alt="" class="yixiang-intro8">
+                                      
+                                    </div>
+                                    <div class="pie-chart">
+                                        <img src="./images/词云/1/风格_1cankao.png" alt="" class="chutang-piechart7">
+                                        <img src="./images/词云/1/内容_1cankao.png" alt="" class="chutang-piechart8">
+                                        <img src="./images/词云/1/情感_1cankao.png" alt="" class="chutang-piechart9">
+                                    </div>
+                                    <div class="piechart-tooltip3" style="display: none;"></div>
+                            </div> 
+                            
+                        </div>
+            
+                       
+                    </div>
+                </div>
+                <div class="warntip">点击并拖拽指针尖端可旋转指针</div>
+                <div class="ciyun-tooltip" style="display: none;"></div>
+            </div>
+
+
+            <div class="div-page-class8">
+                <img src="./images/谢谢观看.png" alt="" class="thanku">
+            </div>
+
+
+
+
+            <!-- 弹窗内容 -->
+    <div id="popup" class="popup" style="transform: translateY(-40%);">
+        <img src="./images/弹窗/无箭头.png" alt="背景图片" class="popup-background">
+    </div>
+
+    <!-- 触发器按钮 -->
+    <div id="popup-trigger" class="popup-trigger">
+        <img src="./images/弹窗/箭头_1.png" alt="Arrow" class="arrow-icon">
+    </div>
+    <div class="popup-explanation">可视化维度解释</div>        
+            
+              
+
+
+        </div>
+    </div>
+</body>
+<script>
+document.addEventListener('wheel', function(e) {
+    e = e || window.event;
+    if ((e.deltaY && e.ctrlKey) || e.detail) {
+        e.preventDefault();
+    }
+}, {
+    capture: false,
+    passive: false
+});
+
+document.addEventListener('keydown', function(event) {
+    if ((event.ctrlKey === true || event.metaKey === true)
+        && (event.keyCode === 61 || event.keyCode === 107
+            || event.keyCode === 173 || event.keyCode === 109
+            || event.keyCode === 187 || event.keyCode === 189)) {
+        event.preventDefault();
+    }
+}, false);
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var titleBackground1 = document.querySelector(".title-background1");
+    var titleBackground2 = document.querySelector(".title-background2");
+    var titleBackground3 = document.querySelector(".title-background3");
+    // 在第5秒后给.title-background2添加动画类
+    setTimeout(function() {
+        titleBackground2.classList.add("animate");
+    }, 0);
+
+    // 在第0秒后给.title-background1添加动画类
+    setTimeout(function() {
+        titleBackground1.classList.add("animate");
+    }, 0);
+
+    setTimeout(function() {
+        titleBackground3.classList.add("animate");
+    }, 0);
+});
+
+// JavaScript
+document.addEventListener("DOMContentLoaded", function() {
+    var rollingIcon = document.querySelector(".rolling-icon");
+    var titleBackgrounds = document.querySelectorAll(".title-background1, .title-background2, .title-background3");
+    
+    // 添加点击事件监听器
+    rollingIcon.addEventListener("click", function() {
+        // 遍历所有标题背景元素
+        titleBackgrounds.forEach(function(element, index) {
+            // 检查当前元素的opacity属性是否为1
+            if (window.getComputedStyle(element).getPropertyValue("opacity") === "1") {
+                // 找到当前显示的元素，构建锚点id
+                var anchorId = "anchor-" + (index + 1);
+                // 使用锚点id滚动到相应的位置
+                var targetSection = document.getElementById(anchorId);
+                targetSection.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+    });
+});
+
+
+
+
+
+
+// 定义全局变量控制滚动状态
+var isScrollEnabled = true;
+var isScrollReallyEnabled = true;
+
+// 监听鼠标滚动事件
+$(document).on('wheel', handleScroll);
+
+// 滚动事件处理函数
+function handleScroll(event) {
+    // 如果滚动已被禁用，则直接返回
+    if (!isScrollEnabled) return;
+    
+    // 获取目标元素的位置信息
+    var targetElementRect = document.querySelector('.stop-bar').getBoundingClientRect();
+    
+     // 计算屏幕越过左边界的距离
+     var distanceOverLeftBoundary = Math.abs(targetElementRect.left);
+    console.log(distanceOverLeftBoundary);
+
+    // 如果累计滚动值超过了阈值，禁用滚动并取消滚动事件的监听
+if (targetElementRect.left <= 0 && distanceOverLeftBoundary <= 1000 && isScrollReallyEnabled)  {
+        console.log("banned");
+
+        var frozenSection = document.getElementById("AnchorId"); // 替换 AnchorId 为你实际的锚点 ID
+if (frozenSection) {
+    frozenSection.scrollIntoView({ behavior: "smooth" });
+    console.log("跳转");
+} else {
+    console.error("Cannot find the element with ID: AnchorId");
+}
+        isScrollEnabled = false; // 禁用滚动
+        
+        $(document).off('wheel', handleScroll); // 取消滚动事件的监听
+
+
+
+
+        loadScript('./workfolder/static/js/pre-data-full-screen.js');
+        console.log("引入js1");
+    }
+    
+    console.log("x rolling !");
+    // 阻止默认滚动行为
+    event.preventDefault();
+
+    // 横向移动页面
+    window.scrollBy({
+        top: 0,
+        left: event.originalEvent.deltaY * 2.2, // 根据鼠标滚动方向和速度调整横向滚动量
+        behavior: 'auto' // 直接滚动，不使用平滑滚动效果
+    });
+}
+
+
+
+
+
+
+
+
+// 动态加载脚本的函数
+function loadScript(url) {
+    var script = document.createElement('script');
+    script.src = url;
+    script.onload = function() {
+        console.log(url + ' loaded.'); // 确认脚本加载完成
+    };
+    document.head.appendChild(script);
+}
+
+
+
+
+// 获取触发器按钮和弹窗元素
+var trigger = document.getElementById('popup-trigger');
+var popup = document.getElementById('popup');
+
+// 当点击触发器按钮时切换弹窗可见性和位置
+trigger.addEventListener('click', function() {
+    // 检查是否已经显示弹窗
+    var transformValue = popup.style.transform;
+    console.log(transformValue);
+    var isPopupVisible = transformValue.indexOf('translateY(-40%)') !== -1;
+    if (isPopupVisible) {
+        popup.style.transform = 'translateY(-89%)'; // 将弹窗向上移动，隐藏弹窗
+    } else {
+        popup.style.transform = 'translateY(-40%)'; // 将弹窗恢复到原始位置，显示弹窗
+    }
+});
+
+
+
+// 当点击触发器时切换弹窗的可见性，并切换触发器的位置
+$('#popup-trigger').click(function() {
+    $('#popup').toggleClass('active');
+    $('.popup-explanation').toggleClass('active');
+    $(this).toggleClass('active');
+});
+
+
+
+
+
+var draggableElement1 = document.getElementById('tool1');
+var draggableElement2 = document.getElementById('tool2');
+
+// 初始位置
+    var initialX1 = 100;
+    var initialY1 = 310;
+    var initialX2 = 100;
+    var initialY2 = 487;
+
+    // 记录鼠标按下时的初始位置
+var offsetX1, offsetY1;
+var offsetX2, offsetY2;
+
+
+  </script>
+  <script src="./workfolder/static/js/flagchoose.js"></script>
+  
+  <script src="./workfolder/static/js/gaoshi1.js"></script>
+  <script src="./workfolder/static/js/gaoshi2.js"></script>
+  <script src="./workfolder/static/js/guiyuan.js"></script>
+  <script src="./workfolder/static/js/population.js"></script>
+  <script src="./workfolder/static/js/shizhongtu.js"></script>
+  <script src="./workfolder/static/js/war-data-graph.js"></script>
+</html>

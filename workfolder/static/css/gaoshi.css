@@ -1,0 +1,213 @@
+.gaoshi-container {
+    height: 100vh;
+    width: 3200px;
+    position: relative;
+}
+.gaoshi-background {
+    height: 100vh;
+    width: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+.gaoshi-state1 {
+    position: absolute;
+    bottom: 6vh;
+    left: 120px;
+    height: 50vh;
+}
+.gaoshi-state2 {
+    position: absolute;
+    bottom: 6vh;
+    left: 120px;
+    height: 70vh;
+    display: none;
+}
+.gaoshi-state3 {
+    position: absolute;
+    bottom: 6vh;
+    left: 120px;
+    height: 78vh;
+    display: none;
+}
+.target {
+    position: absolute;
+    height: 12vh;
+    bottom: 52vh;
+    left: 390px;
+}
+.drag-init1 {
+    position: absolute;
+    height: 12vh;
+    left: 100px;
+    top: 25vh;
+}
+.drag-init2 {
+    position: absolute;
+    height: 12vh;
+    left: 100px;
+    top: 39vh;
+}
+.tool1 {
+    position: absolute;
+    height: 10vh;
+    left: 110px;
+    top: 26vh;
+}
+.tool2 {
+    position: absolute;
+    height: 10vh;
+    left: 96px;
+    top: 39vh;
+}
+
+@keyframes opacityAnimation {
+0% { opacity: 1; }
+50% { opacity: 0.5; }
+100% { opacity: 1; }
+}
+
+.drag-init1,
+.drag-init2,
+.target {
+animation: opacityAnimation 4s infinite;
+}
+
+.gaoshi-sangji1 {
+width: 1000px;
+height: 82vh;
+position: absolute;
+bottom: 6vh;
+right: 750px;
+
+}
+.gaoshi-sangji2 {
+    width: 1000px;
+    height: 82vh;
+position: absolute;
+bottom: 6vh;
+right: 680px;
+
+}
+.gaoshi-poem-container {
+    height: 35vh;
+    width: 580px;
+    position: absolute;
+    top: 37vh;
+    left: 1060px;
+/* background-color: aqua; */
+display: none;
+}
+.gaoshi-period-area {
+    position: absolute;
+    top: 66vh;
+    left: 750px;
+    width: 200px;
+    height: 20vh;
+}
+.gaoshi-period-area img {
+height: 24vh;
+}
+
+
+.poem-line {
+/* writing-mode: vertical-rl;  */
+/* display: inline-block; 使得每一句诗在同一行显示 */
+align-self: center; /* 在交叉轴上居中对齐 */
+/* background-color: rgb(238 228 205); */
+padding: 5px 2px 5px;
+font-size: 3.5vh;
+/* letter-spacing: 0.2em; */
+font-family:'KaiTi';
+color: #b1983d;
+}
+.gaoshi-zaoqi-bigcontainer {
+display: none;
+}
+.gaoshi-wanqi-bigcontainer {
+display: none;
+}
+#poemContainer, #poemContainer2 {
+display: flex;
+
+}
+.poem-container {
+margin-right: 30px; /* 增大不同诗之间的间隔 */
+}
+
+.poem-container h1 {
+margin-bottom: 10px; /* 增大不同诗之间的间隔 */
+font-size: 24px;
+font-weight: bold;
+text-align: center;
+margin-top: 12px;
+}
+#edgeDetails,  #edgeDetails2 {
+font-size: 16px;
+/* font-weight:bold ; */
+color: #948240;
+}
+
+.poem {
+margin-top: 16vh;
+margin-left: -90px;
+}
+.gaoshi-frame-group {
+position: absolute;
+top: -12vh;
+left: 20px;
+}
+.gaoshi-frame-group img {
+height: 22vh;
+margin-top: 2vh;   
+opacity: 0;
+}
+.gaoshi-frame1, .gaoshi-frame2, .gaoshi-frame3 {
+position: absolute;
+}
+
+.gaoshi-frame2 {
+left: 100px;
+}
+.gaoshi-frame3 {
+left: 200px;
+}
+
+.gaoshi-frame-group .frame-char,
+.gaoshi-frame-group .frame-charb {
+position: absolute;
+/* background-color: #948240; */
+width: 34px;
+height: 26vh;
+overflow: hidden;
+font-size: 20px;
+font-weight: bold;
+font-family:'KaiTi';
+overflow: hidden;
+display: flex;
+flex-direction: column;
+justify-content: center; /* 垂直居中 */
+align-items: center; /* 水平居中 */
+
+}
+.gaoshi-frame-group .frame-char div {
+line-height: 1em; /* 与字体大小相近的值 */
+margin: 0; /* 清除默认的外边距 */
+}
+.gaoshi-frame-group .frame-charb div {
+line-height: 1em; /* 与字体大小相近的值 */
+margin: 0; /* 清除默认的外边距 */
+}
+.frame-char1 {
+position: absolute;
+left: 5px;
+}
+.frame-char2 {
+position: absolute;
+left: 105px;
+}
+.frame-char3 {
+position: absolute;
+left: 205px;
+}

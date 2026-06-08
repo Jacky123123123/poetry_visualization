@@ -1,0 +1,142 @@
+body {
+    overflow-y: hidden;
+}
+        .guiyuan-container {
+            position: relative;
+            height: 100vh;
+            width: auto;
+        }
+        /* .guiyuan-background {
+           position: absolute;
+           top: 0;
+           left: 0;
+           height: 100%;
+
+        
+        } */
+
+        .guiyuan-funv-image-group {
+            height: 90vh;
+        }
+
+        .zhanban {
+            position: absolute;
+            top: 7vh;
+            left: 350px;
+            height: 85vh;
+            z-index: -3;
+        }
+
+        .scroll-wrapper {
+            position: absolute;
+            top: 15.2vh;
+    left: 430px;
+    width: 1470px;
+}
+
+.guiyuan-funv-image-group {
+    width: 920px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(8, 130px);
+    grid-row-gap: 8px;
+    grid-column-gap: 30px;
+    gap: 0px;
+    overflow-x: hidden;
+    height: 70vh;
+    /* z-index: -2; */
+    margin-left: -10px;
+}
+
+.women {
+    width: 85px; /* 让图片充满其容器 */
+    padding: 20px;
+}
+
+/* 设置每列图片的行位置 */
+.woman1, .woman8, .woman15, .woman22, .woman29, .woman36, .woman43 {
+    grid-row-start: 1;
+}
+
+.woman2, .woman9, .woman16, .woman23, .woman30, .woman37, .woman44 {
+    grid-row-start: 2;
+}
+
+.woman3, .woman10, .woman17, .woman24, .woman31, .woman38, .woman45 {
+    grid-row-start: 3;
+}
+
+.woman4, .woman11, .woman18, .woman25, .woman32, .woman39, .woman46 {
+    grid-row-start: 4;
+}
+
+.woman5, .woman12, .woman19, .woman26, .woman33, .woman40, .woman47 {
+    grid-row-start: 5;
+}
+
+.woman6, .woman13, .woman20, .woman27, .woman34, .woman41, .woman48 {
+    grid-row-start: 6;
+}
+
+.woman7, .woman14, .woman21, .woman28, .woman35, .woman42, .woman49 {
+    grid-row-start: 7;
+}
+
+
+
+.guiyuan-tooltip {
+    position: absolute;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    padding: 5px;
+    font-family: 'Kaiti';
+    font-size: 15px;
+    color: black;
+    border-radius: 5px;
+    max-width: 20em; /* 设置最大宽度为 20em */
+    white-space: pre-wrap; /* 允许换行 */
+    max-height: 20vh;
+}
+
+
+
+.women:hover {
+    transform: scale(1.2); /* 当鼠标悬停时将图片放大到 1.2 倍 */
+    transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+
+.big-container {
+    width: 3000px;
+    height: 100vh;
+}
+
+.pie-chart-click {
+    height: 4vh;
+    position: absolute;
+    left: 240px;
+    top: -6vh;
+    cursor: pointer;
+    opacity: 0.7; /* 初始不透明度 */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* 添加过渡效果 */
+}
+
+.pie-chart-click:hover {
+    opacity: 1; /* 悬停时的不透明度 */
+    transform: scale(1.2); /* 悬停时的尺寸变大 */
+}
+
+
+#guiyuan-chart {
+    position: absolute;
+    left: -80px;
+    top: -8vh;
+    display: none;
+}
+.warntip2 {
+    position: absolute;
+    top: -5vh;
+    left: 300px;
+    font-family: 'Kaiti';
+    font-size: 18px;
+}

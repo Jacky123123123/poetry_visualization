@@ -1,0 +1,205 @@
+#slider-vertical {
+    height: 46vh;
+    width: 1vh;
+    position: absolute;
+    bottom: 6vh;
+    right: 5vh;
+}
+
+/* 自定义滑块的样式 */
+.custom-handle {
+  width: 4vh !important; /* 滑块宽度 */
+  height: 2.25vh !important; /* 滑块高度 */
+  background-image: url('../../../images/滑柄.png') !important; /* 设置背景图片的相对路径 */
+  background-size: cover !important; /* 图片填充方式 */
+  border: none !important; /* 去除边框 */
+}
+
+/* 自定义滑块轨道的样式 */
+.ui-slider {
+  background-image: url('../../../images/滑条.png') !important; /* 使用您自己的图片作为轨道的背景 */
+  background-size: cover !important; /* 图片填充方式，保持比例并填满轨道 */
+  border-radius: 5px; /* 轨道的圆角 */
+  border: none !important; /* 去除边框 */
+}
+
+/* 去除滑块轨道上的激活部分 */
+.ui-slider-range {
+  background-color: transparent !important; /* 设置激活部分为透明 */
+  border: none !important; /* 去除边框 */
+}
+
+
+
+        .poet-name-container {
+            width: 1817px;
+            height: 1130px;
+            background-color: rgb(0,0,0,0.4);
+            display: none;
+            position: relative;
+            font-size: 24px;
+            color: white;
+        }
+
+        #poet-style-pie-chart {
+            width: 600px;
+            height: 600px;
+            position: absolute;
+            top: 40%;
+            left: 35%;
+        }
+        .quit {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: beige;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .poet-title, .poet-sub-title {
+            position: absolute;
+            left: 50%;
+        }
+        .poet-title {
+            top: 30%;
+        }
+        .poet-sub-title {
+            top: 36%;
+        }
+
+        #tooltip {
+            position: absolute;
+            display: none;
+            white-space: pre-wrap; /* 允许换行 */
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid black;
+            padding: 5px;
+            font-family: 'Kaiti';
+            font-size: 15px;
+            color: black;
+            border-radius: 5px;
+            max-width: 30em; /* 设置最大宽度为 3px */
+            max-height: 40em;
+            overflow: auto; /* 允许垂直滚动 */
+        }
+          body {
+            display: flex;
+            /* justify-content: center;
+            align-items: center; */
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        /* 调整容器样式 */
+        .container {
+  width: 100%; 
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* 调整图片容器样式 */
+.image-container {
+  width: 100%; 
+  height: 90vh;
+}
+
+/* 调整 img 的样式 */
+.image-container img {
+    width: auto;
+    height: 90vh !important;
+    display: block;
+    margin: 0 auto; /* 水平居中 */
+}
+
+#note1 {
+    height: 1.5vh !important;
+    position: absolute;
+    right: 3.9vh;
+    bottom: 26vh;
+}
+#note2 {
+    height: 1.5vh !important;
+    position: absolute;
+    right: 3.9vh;
+    bottom: 38vh;
+}
+
+
+
+
+        .poet-circle,.war-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        
+        #ID-slider-demo-range-1 {
+            margin-top: 280px;
+            width: 400px;
+        }
+
+        .poet-info-container {
+    display: flex;
+    height: 20vh; /* 使用相对单位调整高度 */
+    position: absolute;
+    top: 24vh; /* 使用相对单位调整顶部位置 */
+    right: 0.8vh; /* 使用相对单位调整右侧位置 */
+    font-size: 1.8vh; /* 使用相对单位调整字体大小 */
+    flex-direction:row; /* 垂直排列子元素 */
+}
+
+
+/* 每个数字元素的样式 */
+.war-data, .war-wintime-data, .war-winrate-data {
+    width: min-content; /* 或者 max-content */
+    white-space: nowrap; /* 防止换行 */
+    color: rgb(161, 10, 10);
+}
+
+.war-data-container, .war-wintime-container {
+    margin-top: -12vh;
+}
+.war-wintime-container {
+    margin-left: -1vh;
+    
+}
+.war-wintime-data {
+    margin-right: 1vh;
+    margin-top: 7vh;
+}
+/* .war-data {
+
+
+} */
+.tip {
+    position: absolute;
+    right: 10px;
+    bottom: 5vh;
+    font-size: 18px;
+    font-weight: bold;
+}
+.tip2 {
+    bottom: 53.5vh;
+}
+
+.poet-info-container {
+    font-family: 'Slidechunfeng';
+    font-size: 56px;
+    letter-spacing: -10px;
+}
+
+.warn-tip3 {
+    position: absolute;
+    bottom: 5vh;
+    right: 120px;
+    font-size: 18px;
+    font-family: 'Kaiti';
+}

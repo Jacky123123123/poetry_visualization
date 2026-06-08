@@ -1,0 +1,479 @@
+.clock-ciyun-container {
+    position: relative;
+    width: 2011px;
+}
+.clock-ciyun-background {
+    height: 100vh;
+    pointer-events: none;
+}
+.pointer {
+    position: absolute;
+    height: 25vh;
+    top: 330px;
+    right: 960px;
+    cursor: pointer;
+    transform-origin: 50% 100%;
+}
+.ciyun-shown-area {
+    position: absolute;
+    height: 100vh;
+    width: 711px;
+    top: 0;
+}
+
+.ciyuntu {
+    position: absolute;
+    width: 640px;
+    height: 650px;
+    top: 153px;
+    left: 91px;
+}
+.chutang-area  {
+    display: none;
+}
+.zhongtang-area{
+    display: none;
+}
+.wantang-area{
+    display: none;
+}
+.circle-ciyun {
+    position: absolute;
+    /* left: -8px; */
+    height: 52vh;
+}
+.ciyun-baiyun {
+    height: 6.7vh;
+    position: absolute;
+    bottom: 35.5vh;
+    right: 248px;
+    cursor: pointer;
+}
+.ciyun-jingqi {
+    height: 7.5vh;
+    position: absolute;
+    bottom: 30vh;
+    right: 358px;
+    cursor: pointer;
+}
+.ciyun-jingqi-shadow {
+    height: 14vh;
+    position: absolute;
+    bottom: 26.6vh;
+    right: 330px;
+}
+.ciyun-baiyun-shadow {
+    height: 15vh;
+    position: absolute;
+    bottom: 31.1vh;
+    right: 211px;
+}
+.ciyun-changan {
+    height: 6.5vh;
+    position: absolute;
+    bottom: 43vh;
+    left: 10px;
+    cursor: pointer;
+}
+.ciyun-changan-shadow {
+    height: 12.6vh;
+    position: absolute;
+    bottom: 39.6vh;
+    left: -14px;
+}
+.chutang-yixiang1 {
+    height: 24vh;
+    position: absolute;
+    bottom: 38.8vh;
+    right: 46%;
+    display: none;
+
+}
+
+.chutang-yixiang2 {
+    height: 24vh;
+    position: absolute;
+    bottom: 38.4vh;
+    right: 52%;
+    display: none;
+}
+
+
+@keyframes pulse {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.1);
+}
+100% {
+transform: scale(1);
+}
+}
+
+@keyframes blur {
+0% {
+filter: blur(0px);
+}
+50% {
+filter: blur(5px);
+}
+100% {
+filter: blur(0px);
+}
+}
+
+.ciyun-baiyun-shadow, .ciyun-jingqi-shadow, .ciyun-changan-shadow,.ciyun-loutai-shadow,
+.ciyun-zhengren-shadow,.ciyun-qiufeng-shadow,.ciyun-baishou-shadow, .ciyun-guanshan-shadow  {
+animation: pulse 3s infinite, blur 3s infinite; /* 添加一个 blur 动画 */
+}
+
+.yixiang-intro {
+height: 30vh;
+position: absolute;
+bottom: 28vh;
+}
+.yixiang-intro1 {
+height: 20vh;
+position: absolute;
+bottom: -23vh;
+left: -50px;
+display: none;
+opacity: 0; /* 初始透明度为0 */
+transition: opacity 0.5s ease; /* 添加过渡效果 */
+}
+.yixiang-intro2 {
+height: 22vh;
+position: absolute;
+bottom: -25vh;
+left: -50px;
+display: none;
+opacity: 0; /* 初始透明度为0 */
+transition: opacity 0.5s ease; /* 添加过渡效果 */
+}
+.chutang-yixiang3 {
+    height: 24.5vh;
+    position: absolute;
+    bottom: 38.6vh;
+    right: 49.4%;
+    display: none;
+    opacity: 0; /* 初始透明度为0 */
+    transition: opacity 0.5s ease; /* 添加过渡效果 */
+} 
+
+.yixiang-intro3 {
+    height: 22vh;
+    position: absolute;
+    bottom: -25vh;
+    left: -50px;
+    display: none;
+    opacity: 0; /* 初始透明度为0 */
+    transition: opacity 0.5s ease; /* 添加过渡效果 */
+}
+
+.yixiang-intro4 {
+height: 20.5vh;
+position: absolute;
+bottom: -25vh;
+left: -50px;
+display: none;
+opacity: 0; /* 初始透明度为0 */
+transition: opacity 0.5s ease; /* 添加过渡效果 */
+
+}
+.yixiang-intro5 {
+height: 20.5vh;
+position: absolute;
+bottom: -25vh;
+left: -50px;
+display: none;
+opacity: 0; /* 初始透明度为0 */
+transition: opacity 0.5s ease; /* 添加过渡效果 */
+}
+.yixiang-intro6 {
+height: 20.5vh;
+position: absolute;
+bottom: -25vh;
+left: -50px;
+display: none;
+opacity: 0; /* 初始透明度为0 */
+transition: opacity 0.5s ease; /* 添加过渡效果 */
+}
+.yixiang-intro7 {
+height: 20.5vh;
+position: absolute;
+bottom: -25vh;
+left: -50px;
+display: none;
+opacity: 0; /* 初始透明度为0 */
+transition: opacity 0.5s ease; /* 添加过渡效果 */
+}
+.yixiang-intro8 {
+height: 20.5vh;
+position: absolute;
+bottom: -25vh;
+left: -50px;
+display: none;
+opacity: 0; /* 初始透明度为0 */
+transition: opacity 0.5s ease; /* 添加过渡效果 */
+}
+.chutang-piechart1 {
+    height: 21vh;
+    position: absolute;
+    right: 16px;
+    bottom: 24.5vh;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.chutang-piechart1:hover,
+.chutang-piechart2:hover,
+.chutang-piechart3:hover,
+.chutang-piechart4:hover,
+.chutang-piechart5:hover,
+.chutang-piechart6:hover,
+.chutang-piechart7:hover,
+.chutang-piechart8:hover,
+.chutang-piechart9:hover {
+transform: scale(1.1); /* 鼠标悬停时放大图片 */
+}
+/* 悬浮时的放大效果 */
+.chutang-piechart1.active,
+.chutang-piechart2.active,
+.chutang-piechart3.active,
+.chutang-piechart4.active,
+.chutang-piechart5.active,
+.chutang-piechart6.active,
+.chutang-piechart7.active,
+.chutang-piechart8.active,
+.chutang-piechart9.active {
+    transform: scale(1.1);
+}
+.chutang-piechart4 {
+    height: 21vh;
+    position: absolute;
+    right: 16px;
+    bottom: 24.5vh;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.chutang-piechart5 {
+    height: 21vh;
+    position: absolute;
+    right: -115px;
+    bottom: 56vh;
+    cursor: pointer;
+transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+.chutang-piechart6 {
+    height: 21vh;
+    position: absolute;
+    right: -406px;
+    bottom: 69.4vh;
+    cursor: pointer;
+transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+.chutang-piechart7 {
+    height: 21vh;
+    position: absolute;
+    right: 16px;
+    bottom: 24.5vh;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.chutang-piechart8 {
+    height: 21vh;
+    position: absolute;
+    right: -115px;
+    bottom: 56vh;
+    cursor: pointer;
+transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+.chutang-piechart9 {
+    height: 21vh;
+    position: absolute;
+    right: -406px;
+    bottom: 69.4vh;
+    cursor: pointer;
+transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+.chutang-piechart2 {
+    height: 21vh;
+    position: absolute;
+    right: -115px;
+    bottom: 56vh;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.chutang-piechart3 {
+    height: 21vh;
+    position: absolute;
+    right: -406px;
+    bottom: 69.4vh;
+    cursor: pointer;
+transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+
+
+.ciyun-loutai {
+    height: 6.8vh;
+    position: absolute;
+    bottom: 48vh;
+    left: 0;
+    cursor: pointer;
+}
+.ciyun-loutai-shadow {
+    height: 13vh;
+    position: absolute;
+    bottom: 45vh;
+    left: -27px;
+}
+
+.ciyun-guanshan {
+    height: 6vh;
+    position: absolute;
+    top: 4.2vh;
+    right: 270px;
+    cursor: pointer;
+}
+.ciyun-guanshan-shadow {
+    height: 13vh;
+    position: absolute;
+    top: 0.5vh;
+    right: 242px;
+}
+.ciyun-qiufeng {
+    height: 7vh;
+    position: absolute;
+    bottom: 54.5vh;
+    left: 3px;
+    cursor: pointer;
+}
+.ciyun-qiufeng-shadow {
+    height: 13.5vh;
+    position: absolute;
+    bottom: 51.2vh;
+    left: -23px;
+}
+.ciyun-zhengren {
+    height: 7.7vh;
+    position: absolute;
+    bottom: 42.5vh;
+    left: 0;
+    cursor: pointer;
+}
+.ciyun-zhengren-shadow {
+    height: 15.6vh;
+    position: absolute;
+    bottom: 38.6vh;
+    left: -31px;
+}
+
+.ciyun-baishou {
+    height: 6vh;
+    position: absolute;
+    bottom: 28vh;
+    right: 380px;
+    cursor: pointer;
+}
+.ciyun-baishou-shadow {
+    height: 11.8vh;
+    position: absolute;
+    bottom: 25vh;
+    right: 356px;
+}
+.zhongtang-yixiang1 {
+    height: 29vh;
+    position: absolute;
+    bottom: 37vh;
+    right: 47%;
+    display: none;
+    opacity: 0; /* 初始透明度为0 */
+    transition: opacity 0.5s ease; /* 添加过渡效果 */
+}
+.zhongtang-yixiang2 {
+height: 24vh;
+    position: absolute;
+    bottom: 38vh;
+    right: 46%;
+    display: none;
+    opacity: 0; /* 初始透明度为0 */
+    transition: opacity 0.5s ease; /* 添加过渡效果 */
+}
+.zhongtang-yixiang3 {
+    height: 26vh;
+    position: absolute;
+    bottom: 37vh;
+    right: 47.5%;
+    display: none;
+    opacity: 0; /* 初始透明度为0 */
+    transition: opacity 0.5s ease; /* 添加过渡效果 */
+}
+.wantang-yixiang1 {
+    height: 33vh;
+    position: absolute;
+    bottom: 34.5vh;
+    right: 45%;
+    display: none;
+    opacity: 0; /* 初始透明度为0 */
+    transition: opacity 0.5s ease; /* 添加过渡效果 */
+}
+.wantang-yixiang2 {
+    height: 25vh;
+    position: absolute;
+    bottom: 37.9vh;
+    right: 46.3%;
+    display: none;
+    opacity: 0; /* 初始透明度为0 */
+    transition: opacity 0.5s ease; /* 添加过渡效果 */
+}
+
+.ciyun-tooltip {
+    position: absolute;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    padding: 5px;
+    font-family: 'Kaiti';
+    font-size: 15px;
+    color: black;
+    border-radius: 5px;
+    max-width: 20em;
+    white-space: pre-wrap;
+    max-height: 20vh;
+}
+.warntip {
+    font-family: 'Kaiti';
+    position: absolute;
+    bottom: 7vh;
+    right: 1550px;
+    font-size: 18px;
+}
+
+.piechart-tooltip, .piechart-tooltip2, .piechart-tooltip3 {
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid black;
+    padding: 10px;
+    font-family: 'Kaiti';
+    font-size: 15px;
+    color: black;
+    border-radius: 5px;
+}
+/* 样式设置 */
+.piechart-tooltip {
+    position: absolute;
+    top: 32vh;
+    left: 950px;
+   
+}
+
+.piechart-tooltip2 {
+    position: absolute;
+    top: 32vh;
+    left: 950px;
+}
+.piechart-tooltip3 {
+    position: absolute;
+    top: 32vh;
+    left: 950px;
+}

@@ -1,0 +1,195 @@
+.leaf-bac-img, .warflag-bac-img {
+    width: auto;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%; /* 设置最大宽度为100% */
+    max-height: 100%; /* 设置最大高度为100% */
+
+}
+.warflag-bac-img {
+    opacity: 0;
+}
+        .leaf {
+            position: absolute;
+            width: 120px; /* 叶子宽度 */
+            height: 120px; /* 叶子高度 */
+            background-image: url('leaf.png'); /* 叶子图片路径 */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 18px;
+        }
+        .flower-tooltip {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            border: 1px solid black;
+            border-radius: 5px;
+            pointer-events: none; /* 防止tooltip影响鼠标事件 */
+            display: none;
+            z-index: 999; /* 设置tooltip位于最顶层 */
+            font-size: 15px;
+        }
+        .leaf-container {
+    position: relative;
+    height: 100vh; /* 设置容器高度为900px */
+    width: 1700px; /* 设置容器宽度为1000px */
+    left: 13%;
+}
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes fade {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+
+
+
+        /* 开始合并 */
+        .line {
+        position: absolute;
+        width: 2px;
+        background-color:transparent;
+        
+    }
+    #Line3 {
+        height: 26vh;
+        top:36%;
+        left: 50%;
+        transform: translateY(0) rotate(15deg);
+    }
+    #Line1 {
+        height: 45%;
+        left: 43%;
+        top: 30vh;
+        transform-origin: top;
+        transform: translateY(0) rotate(65deg);
+    }
+    #Line2 {
+        height: 30%;
+        left: 45%;
+        top: 30vh;
+        transform-origin: top;
+        transform: translateY(0) rotate(45deg);
+    }
+    #Line4 {
+        height: 30%;
+        right: 49%;
+        top: 35vh;
+        transform-origin: top;
+        transform: translateY(0) rotate(-45deg);
+    }
+    #Line5 {
+        height: 45%;
+        right: 43%;
+        top: 30vh;
+        transform-origin: top;
+        transform: translateY(0) rotate(-65deg);
+    }
+
+    .line img {
+    width: 130px; /* 图片宽度 */
+    height: 130px; /* 图片高度 */
+    border-radius: 50%; /* 圆形图片 */
+    position: absolute;
+    top: 0;
+   
+}
+
+
+#Line3 img {
+    transform: rotate(-15deg); /* 不需要旋转 */
+    margin-left: -9vh;
+    margin-top: -26vh;
+
+}
+
+#Line1 img {
+    transform: rotate(-65deg);
+    transform-origin: left bottom; /* 以左下角为变换原点 */
+
+}
+
+#Line2 img {
+    transform: rotate(-45deg);
+    transform-origin: left bottom; /* 以左下角为变换原点 */
+    margin-top: -17vh;
+}
+
+#Line4 img {
+    transform: rotate(45deg);
+    margin-top: -17vh;
+}
+
+#Line5 img {
+    transform: rotate(65deg);
+    
+}
+
+.piechart-container img {
+    position: absolute;
+    top: 5vh;
+    left: 500px;
+    height: 18vh;
+}
+
+.piechart-container {
+    display: none;
+}
+    /* 添加样式以使提示框可见 */
+#flagTooltip {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    padding: 10px;
+    z-index: 1000; /* 确保提示框在其他元素上方显示 */
+    font-size: 15px;
+}
+.flag-container {
+    display: none; /* 初始状态为不可见 */
+    position: absolute;
+    top: 2vh;
+    height: 100vh;
+    width: 1200px;
+    left: 9%;
+    overflow: hidden;
+}
+
+.flag-container.visible {
+    display: block; /* 滚动到 3600 后可见 */
+}
+
+.flag-div-line img {
+    height: 20vh;
+    width: auto;
+    position: absolute;
+    bottom: 50vh;
+    left: 0;
+    
+}
+.flag-div-line {
+    display: none;
+}
+
+.later-40years {
+    display: none;
+}

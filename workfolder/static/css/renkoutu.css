@@ -1,0 +1,230 @@
+#population-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1620px;
+    height: 100vh;
+    /* z-index: -1; */
+    background-image: url('../../../images/人口/背景.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    pointer-events: none; /* 允许鼠标事件穿透 */
+  }
+
+  .bar-group {
+    position: relative;
+    width: 1590px;
+    height: 557px;
+    margin-top: 240px;
+  }
+  .bar1 {
+    width: 34px;
+    height: 88px;
+    position: absolute;
+    left: 10%;
+    bottom: 14.5%;
+  }
+
+  .bar2 {
+    width: 34px;
+    height: 140px;
+    position: absolute;
+    left: 15.5%;
+    bottom: 14.5%;
+  }
+
+  .bar3 {
+    width: 34px;
+    height: 337px;
+    position: absolute;
+    left: 38.3%;
+    bottom: 14.5%;
+  }
+
+  .bar4 {
+    width: 34px;
+    height: 387px;
+    position: absolute;
+    left: 47.5%;
+    bottom: 14.5%;
+  }
+
+  .bar5 {
+    width: 34px;
+    height: 455px;
+    position: absolute;
+    left: 53.3%;
+    bottom: 14.5%;
+  }
+
+  .bar6 {
+    width: 34px;
+    height: 579px;
+    position: absolute;
+    left: 58.2%;
+    bottom: 14.5%;
+  }
+
+  .bar7 {
+    width: 34px;
+    height: 140px;
+    position: absolute;
+    left: 61.7%;
+    bottom: 14.5%;
+  }
+
+  .bar8 {
+    width: 34px;
+    height: 273px;
+    position: absolute;
+    left: 70.2%;
+    bottom: 14.5%;
+  }
+
+  .bar9 {
+    width: 34px;
+    height: 140px;
+    position: absolute;
+    left: 80%;
+    bottom: 14.5%;
+  }
+
+  .bar10 {
+    width: 34px;
+    height: 140px;
+    position: absolute;
+    left: 87.3%;
+    bottom: 14.5%;
+  }
+  .bar1:hover,
+  .bar2:hover,
+  .bar3:hover,
+  .bar4:hover,
+  .bar5:hover,
+  .bar6:hover,
+  .bar7:hover,
+  .bar8:hover,
+  .bar9:hover,
+  .bar10:hover {
+      transform: scale(1.05); /* 略微放大 */
+      transition: transform 0.3s ease; /* 添加过渡效果 */
+  }
+  
+
+
+.wars-bar-group img {
+position: absolute;
+width: auto;
+}
+.wars-bar-1 {
+height: 17.6px;
+left: 82px;
+top: 49px;
+}
+.wars-bar-2 {
+height: 12.3px;
+left: 82px;
+top: 81px;
+}
+.wars-bar-3 {
+height: 28px;
+left: 82px;
+top: 94px;
+}
+.wars-bar-4 {
+height: 12.3px;
+left: 211px;
+top: 81px;
+}
+.wars-bar-5 {
+height: 18px;
+left: 264px;
+top: 49px;
+}
+.wars-bar-6 {
+height: 18px;
+left: 322px;
+top: 49px;
+}
+.wars-bar-7 {
+height: 14px;
+left: 582px;
+top: 76px;
+}
+.wars-bar-8 {
+height: 14.3px;
+left: 634px;
+top: 78px;
+}
+.wars-bar-9 {
+height: 16px;
+left: 813px;
+top: 49px;
+}
+.wars-bar-10 {
+height: 16px;
+left: 874px;
+top: 49px;
+}
+.wars-bar-1:hover,
+.wars-bar-2:hover,
+.wars-bar-4:hover,
+.wars-bar-5:hover,
+.wars-bar-6:hover,
+.wars-bar-7:hover,
+.wars-bar-8:hover,
+.wars-bar-9:hover,
+.wars-bar-10:hover {
+    transform: scale(1.2); /* 略微放大 */
+    transition: transform 0.3s ease; /* 添加过渡效果 */
+    fill: #f9d71c; /* 高亮显示的颜色 */
+}
+.wars-bar-3:hover {
+  transform: scale(1.02); /* 略微放大 */
+  transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+.war-tooltip {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    font-family: 'Kaiti';
+    color: black;
+    padding: 5px;
+    border-radius: 3px;
+    pointer-events: none;
+    display: none; /* 初始隐藏 */
+    font-size: 24px;
+  }
+  .population-tooltip, .poem-number-tooltip {
+position: fixed;
+background-color: rgba(255, 255, 255, 0.8);
+font-family: 'Kaiti';
+border: 1px solid black;
+color: black;
+padding: 5px;
+border-radius: 3px;
+pointer-events: none;
+font-size: 24px;
+display: none;
+}
+#chart {
+position: absolute;
+top: 112px;
+left: 35px;
+}
+.poem-number-group {
+position: absolute;
+top: 0;
+      width: 2390px; /* 设置元素的宽度 */
+      height: 1257px; /* 设置元素的高度 */
+      
+     
+      
+  }
+
+  .poem1 {
+    bottom: 210px;
+    left: 250px;
+
+  }
+

@@ -1,0 +1,213 @@
+
+.style-choose {
+    height: 100vh;
+    width: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.choices {
+    width: 7vh;
+    position: absolute;
+    top: 0;
+    cursor:pointer;
+}
+.choice1 {
+    top: 50vh;
+    left: 940px;
+}
+.choice2 {
+    top: 57.5vh;
+    left: 955px;
+}
+.choice3 {
+    top: 53vh;
+    left: 1050px;
+}
+
+.flag-shown-area {
+    position: absolute;
+    width: 650px;
+    height: 900px;
+    top: 33vh;
+    left: 800px;
+}
+
+.flag-shown-area img {
+    position: absolute;
+    width: 56vh;
+    height: 59vh;
+    clip-path: polygon(5% 5%, 95% 5%, 95% 95%, 5% 95%);
+    transform: scale(0.95);
+}
+
+.guide-area {
+    width: 550px;
+    height: 400px;
+    position: absolute;
+    top: 42vh;
+    left: 55px;
+
+}
+.guide-area img {
+width: 100%;
+height: auto;
+position: absolute;
+}
+.guide-area .guide-area1 {
+display: none;
+}
+
+
+.style-choice,
+.content-choice,
+.emotion-choice,
+.choices  {
+opacity: 0.5; /* 初始状态下半透明 */
+animation: fadeAnimation 2s infinite alternate; /* 定义动画 */
+cursor: pointer;
+}
+
+/* 定义动画效果 */
+@keyframes fadeAnimation {
+0% {
+opacity: 0.5;
+}
+50% {
+opacity: 1;
+}
+100% {
+opacity: 0.5;
+}
+}
+
+
+.guide-area .guide-area1  .style-choice {
+width: 55px;
+position: absolute;
+}
+.guide-area1  .style-choice1 {
+left: 200px;
+top: 4vh;
+}
+.guide-area1  .style-choice2 {
+left: 298px;
+top: 4vh;
+}
+.guide-area1  .style-choice3 {
+left: 396px;
+top: 4vh;
+}
+.guide-area .guide-area2 {
+display: none;
+}
+.guide-area .guide-area3 {
+display: none;
+}
+
+
+.guide-area .guide-area2  .emotion-choice {
+width: 63px;
+position: absolute;
+}
+.guide-area2  .emotion-choice1 {
+left: 190px;
+top: 4.5vh;
+}
+.guide-area2  .emotion-choice2 {
+left: 275px;
+top: 4.5vh;
+}
+.guide-area2  .emotion-choice3 {
+left: 360px;
+top: 4.5vh;
+}
+.guide-area2  .emotion-choice4 {
+left: 445px;
+top: 4.5vh;
+}
+.guide-area2  .emotion-choice5 {
+    left: 190px;
+top: 14vh;
+}
+.guide-area2  .emotion-choice6 {
+    left: 275px;
+top: 14vh;
+}
+.guide-area2  .emotion-choice7 {
+left: 360px;
+top: 14vh;
+}
+
+
+.guide-area .guide-area3  .content-choice {
+width: 55px;
+position: absolute;
+}
+.guide-area3  .content-choice1 {
+left: 170px;
+top: 4.6vh;
+}
+.guide-area3  .content-choice2 {
+left: 255px;
+top: 4.6vh;
+}
+.guide-area3  .content-choice3 {
+left: 340px;
+top: 4.6vh;
+}
+.guide-area3  .content-choice4 {
+left: 425px;
+top: 4.6vh;
+}
+.guide-area3  .content-choice5 {
+    left: 170px;
+    top: 13vh;
+}
+.guide-area3  .content-choice6 {
+left: 255px;
+top: 13vh;
+}
+.guide-area3  .content-choice7 {
+left: 340px;
+top: 13vh;
+}
+
+.flag2 {
+
+display: none;
+}
+.flag3 {
+display: none;
+}
+
+
+.poet-show-area {
+position: absolute;
+/* background-color: aqua; */
+left: 630px;
+    top: 60px;
+    width: 800px;
+height: 280px;
+font-family: 'Kaiti';
+font-size: 15px;
+}
+.poems-show {
+/* margin-left: 50px; */
+font-size: 24px;
+width: 1200px;
+height: 280px;
+color: rgb(194, 148, 78);
+}
+.poem-tooltip {
+position: absolute;
+top: 0;
+left: 0;
+background-color: white;
+border: 1px solid black;
+padding: 10px;
+display: none; /* 初始状态下隐藏 */
+font-size: 16px;
+z-index: 999; /* 设置较高的 z-index 值 */
+max-width: 200px;
+}
